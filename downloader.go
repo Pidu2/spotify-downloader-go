@@ -63,7 +63,7 @@ func search_and_download(artist string, title string, folder string) {
 
 		tracklist, conversion_ok := result["response"].([]interface{})
 		if !conversion_ok {
-			if repeat_counter <= 2 {
+			if repeat_counter <= 2 || len(tracklist) == 0 {
 				fmt.Println("   [ERROR] Download failed, trying again in 5 seconds")
 				time.Sleep(5 * time.Second)
 				repeat_counter += 1
